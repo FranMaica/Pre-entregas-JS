@@ -1,0 +1,157 @@
+body {
+    background-color: rgb(145, 145, 145);
+    animation: none; /* Elimina cualquier animación en el cuerpo */
+}
+
+h1 {
+    color: white;
+    text-align: center; /* Centra el título en ambas páginas */
+}
+
+#game-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las cards horizontalmente */
+    gap: 20px; /* Espacio entre las cards */
+    margin-top: 20px;
+}
+
+.game-card {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px; /* Ajusta el padding para las cards */
+    width: 200px; /* Ajusta el ancho de las cards */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-card h2 {
+    font-size: 1.2em; /* Ajusta el tamaño de la fuente */
+    margin-bottom: 10px;
+}
+
+.game-card p {
+    font-size: 0.9em; /* Ajusta el tamaño de la fuente */
+    margin-bottom: 10px;
+}
+
+.game-card button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px; /* Ajusta el padding del botón */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+.game-card button:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+.Filtro {
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(0, 247, 255);
+}
+
+/* Estilos para la barra de búsqueda */
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px; /* Ajusta el ancho según tu diseño */
+    margin-right: 10px; /* Espacio entre la barra de búsqueda y el botón */
+}
+
+/* Estilos para el botón "Borrar" */
+#clear-filter {
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    background-color: #dc3545; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1.1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+#clear-filter:hover {
+    background-color: #c82333; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+#clear-filter:active {
+    transform: scale(0.95); /* Efecto de reducción al hacer clic */
+}
+
+.VolverInicio {
+    text-decoration: none;
+    color: rgb(0, 247, 255);
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center; /* Centra la frase TOTAL */
+}
+
+#checkout-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1.1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+#checkout-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+#checkout-button:active {
+    transform: scale(0.95); /* Efecto de reducción al hacer clic */
+}
+
+.headerCenter {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna */
+    align-items: center; /* Centra el contenido */
+}
+
+.carritoClass {
+    width: 60px; /* Cambia a un tamaño mayor */
+    height: 60px; /* Cambia a un tamaño mayor */
+    margin-top: 10px; /* Mantén el margen */
+}
+
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las cards horizontalmente */
+    gap: 20px; /* Espacio entre las cards */
+    margin-top: 20px;
+}
+
+.center {
+    text-align: center; /* Centra el texto dentro del div */
+}
+
+.volver-inicio {
+    text-decoration: none;
+    color: rgb(0, 247, 255);
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    display: block; /* Permite centrar el enlace como un bloque */
+    text-align: center; /* Centra el texto del enlace */
+    margin-top: 20px; /* Espacio superior */
+}
