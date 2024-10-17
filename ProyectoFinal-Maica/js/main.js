@@ -17,37 +17,43 @@ localStorage.setItem('juegos', JSON.stringify(juegos));
 // Recuperar juegos del Local Storage
 const juegosGuardados = JSON.parse(localStorage.getItem('juegos')) || [];
 
-function crearCardJuego(titulo, img, descripcion, precio) {
+function crearCardJuego({ nombre, img, genero, precio }) {
     const contenedor = document.getElementById('game-cards-container');
+    if (!contenedor) {
+        console.error('No se encontró el contenedor de las tarjetas de juegos');
+        return;
+    }
 
     const card = document.createElement('div');
     card.classList.add('game-card');
 
     const tituloJuego = document.createElement('h2');
-    tituloJuego.textContent = titulo;
+    tituloJuego.textContent = nombre;
 
-    const imgJuego = document.createElement("img")
-    imgJuego.src = img
+    const imgJuego = document.createElement("img");
+    imgJuego.src = img;
 
     const descripcionJuego = document.createElement('p');
-    descripcionJuego.textContent = descripcion;
+    descripcionJuego.textContent = genero;
 
     const precioJuego = document.createElement('p');
     precioJuego.textContent = `Precio: $${precio}`;
 
     const botonCarrito = document.createElement('button');
     botonCarrito.textContent = 'Agregar al carrito';
-    botonCarrito.classList.add('carrito-button');
-    botonCarrito.classList.add('btn');
-    botonCarrito.classList.add('btn-success');
+    botonCarrito.classList.add('carrito-button', 'btn', 'btn-success');
 
     // Llamar a la función de carrito.js para agregar el juego al carrito
     botonCarrito.addEventListener('click', () => {
-        agregarAlCarrito(titulo, img, descripcion, precio);
+        if (typeof agregarAlCarrito === 'function') {
+            agregarAlCarrito(nombre, img, genero, precio);
+        } else {
+            console.error('La función agregarAlCarrito no está definida');
+        }
     });
 
     card.appendChild(tituloJuego);
-    card.appendChild(imgJuego)
+    card.appendChild(imgJuego);
     card.appendChild(descripcionJuego);
     card.appendChild(precioJuego);
     card.appendChild(botonCarrito);
@@ -57,14 +63,27 @@ function crearCardJuego(titulo, img, descripcion, precio) {
 
 function mostrarJuegos(juegosFiltrados) {
     const contenedor = document.getElementById('game-cards-container');
+    if (!contenedor) {
+        console.error('No se encontró el contenedor de las tarjetas de juegos');
+        return;
+    }
     contenedor.innerHTML = '';
 
     juegosFiltrados.forEach(juego => {
-        crearCardJuego(juego.nombre, juego.img, juego.genero, juego.precio);
+        if (juego && juego.nombre && juego.img && juego.genero && juego.precio !== undefined) {
+            crearCardJuego(juego);
+        } else {
+            console.warn('Juego con datos incompletos:', juego);
+        }
     });
 }
 
 function filtrarJuegosPorNombre(nombre) {
+    if (typeof nombre !== 'string') {
+        console.error('El nombre proporcionado no es una cadena de texto');
+        return;
+    }
+
     if (nombre.trim() === "") {
         mostrarJuegos(juegosGuardados);
         return;
@@ -84,8 +103,13 @@ document.getElementById('nombre').addEventListener('input', (event) => {
 
 // Funcionalidad para el botón de "Borrar"
 document.getElementById('clear-filter').addEventListener('click', () => {
-    document.getElementById('nombre').value = '';
-    mostrarJuegos(juegosGuardados);
+    const inputNombre = document.getElementById('nombre');
+    if (inputNombre) {
+        inputNombre.value = '';
+        mostrarJuegos(juegosGuardados);
+    } else {
+        console.error('No se encontró el campo de entrada para el nombre');
+    }
 });
 
 // Mostrar todos los juegos al cargar la página
